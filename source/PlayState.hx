@@ -23,6 +23,9 @@ import lime.app.Application;
 import lime.media.AudioContext;
 import lime.media.AudioManager;
 import openfl.Lib;
+#if android
+import android.FlxVirtualPad;
+#end
 import Section.SwagSection;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
