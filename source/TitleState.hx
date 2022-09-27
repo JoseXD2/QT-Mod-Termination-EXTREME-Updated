@@ -50,14 +50,18 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		#if android
+	        FlxG.android.preventDefaultKeys = [BACK];
+	        #end
+			
 		FlxGraphic.defaultPersist = true; //Alright, somebody in the community said this will help with caching... Hopefuly it doesn't break anything.
 		//Note to self though, this will break "destroyOnNotUse" so remember to disable persist on any graphics you want to destroy when not being used.
 
 		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+	//	polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 		
-		#if sys
+		#if desktop 
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
@@ -275,7 +279,7 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
-		#if mobile
+		#if android
 		for (touch in FlxG.touches.list)
 		{
 			if (touch.justPressed)
