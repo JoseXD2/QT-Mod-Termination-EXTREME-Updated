@@ -199,6 +199,7 @@ class PlayState extends MusicBeatState
 	var streetBGerror:FlxSprite;
 	var streetFrontError:FlxSprite;
 	var dad404:Character;
+	var _vpad:FlxVirtualPad;
 	var gf404:Character;
 	var boyfriend404:Boyfriend;
 	var qtIsBlueScreened:Bool = false;
@@ -1810,8 +1811,12 @@ class PlayState extends MusicBeatState
 
 		#if android
 		addAndroidControls();
-		#end	
 			
+			
+		_vpad = new FlxVirtualPad(NONE, A);
+	   _vpad.cameras = [camHUD];
+			this.add(_vpad);
+               #end	
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
