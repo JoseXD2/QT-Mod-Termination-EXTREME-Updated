@@ -4683,10 +4683,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 
-			if(FlxG.keys.justPressed.SPACE)
+			if(_vpad.buttonA.justPressed)
 				trace('butttonpressed');
 
-			if(FlxG.keys.justPressed.SPACE && !bfDodging && bfCanDodge){
+			if(_vpad.buttonA.justPressed && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
