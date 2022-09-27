@@ -12,12 +12,12 @@ import flash.system.System;
 
 // Lua
 
-#if cpp
+
 import llua.Convert;
 import llua.Lua;
 import llua.State;
 import llua.LuaL;
-#end
+
 
 import lime.app.Application;
 import lime.media.AudioContext;
@@ -255,7 +255,7 @@ class PlayState extends MusicBeatState
 
 	// LUA SHIT
 	
-	#if cpp
+	
 
 	public static var lua:State = null;
 
@@ -457,7 +457,7 @@ class PlayState extends MusicBeatState
 		#end
 		return toBeCalled;
 	}
-	#end
+	
 	// LUA SHIT
 
 	override public function create()
@@ -475,14 +475,14 @@ class PlayState extends MusicBeatState
 		repPresses = 0;
 		repReleases = 0;
 
-		#if sys
-		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
-		#end
+		executeModchart = openfl.utils.Assets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
+
+		
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets //Hey, wtf is 'cpp targets'? -Haz
 		#end
 
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
+		trace('Mod chart is working, go fuck yourself if you want to see the full trace');
 
 		#if windows
 		// Making difficulty text for Discord Rich Presence.
